@@ -14,6 +14,7 @@
             --dot-color: rgba(253, 200, 48, 0.2);
         }
 
+        /* Base styles */
         .music-control {
             position: fixed;
             bottom: 20px;
@@ -28,6 +29,7 @@
             cursor: pointer;
             box-shadow: 0 3px 10px var(--shadow-color);
             z-index: 1000;
+            font-size: 1.5rem;
         }
 
         .back-button {
@@ -42,9 +44,10 @@
             font-family: 'Poppins', sans-serif;
             box-shadow: 0 3px 10px var(--shadow-color);
             z-index: 1000;
+            font-weight: 500;
         }
 
-        /* Override sticky note styles for friend2 */
+        /* Content styles */
         .sticky-note {
             background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
         }
@@ -57,7 +60,6 @@
             color: var(--accent-secondary);
         }
 
-        /* Override title gradient */
         .title {
             background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
             -webkit-background-clip: text;
@@ -65,7 +67,6 @@
             background-clip: text;
         }
 
-        /* Override section title gradient */
         .section-title {
             background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
             -webkit-background-clip: text;
@@ -73,7 +74,6 @@
             background-clip: text;
         }
 
-        /* Override letter styles */
         .letter p:first-child {
             color: var(--accent-secondary);
         }
@@ -86,13 +86,151 @@
             background: linear-gradient(145deg, var(--accent-color), var(--accent-secondary));
         }
 
-        /* Custom polaroid styles for friend2 */
         .polaroid {
             border: 1px solid rgba(243, 115, 53, 0.2);
         }
 
         .polaroid p {
             color: var(--accent-secondary);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .scrapbook-page {
+                padding: 2rem 1.5rem;
+                margin-top: 60px; /* Space for back button */
+            }
+
+            .title {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .content-grid {
+                gap: 1.5rem;
+            }
+
+            .polaroid {
+                max-width: 250px;
+                padding: 12px 12px 35px 12px;
+            }
+
+            .polaroid p {
+                font-size: 1rem;
+                margin-top: 12px;
+            }
+
+            .sticky-note {
+                max-width: 250px;
+                min-height: 140px;
+                padding: 20px;
+            }
+
+            .note-front, .note-back {
+                font-size: 1rem;
+                padding: 15px;
+            }
+
+            .letter {
+                padding: 1.5rem;
+            }
+
+            .letter p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .music-control {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scrapbook-page {
+                padding: 1.5rem 1rem;
+            }
+
+            .title {
+                font-size: 2rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .polaroid {
+                max-width: 220px;
+                padding: 10px 10px 30px 10px;
+            }
+
+            .polaroid p {
+                font-size: 0.9rem;
+                margin-top: 10px;
+            }
+
+            .sticky-note {
+                max-width: 220px;
+                min-height: 130px;
+                padding: 15px;
+            }
+
+            .note-front, .note-back {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+
+            .letter {
+                padding: 1.2rem;
+            }
+
+            .letter p {
+                font-size: 0.95rem;
+            }
+
+            .back-button {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+
+            .music-control {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) {
+            .sticky-note {
+                cursor: default;
+            }
+
+            .sticky-note:active {
+                transform: scale(0.98);
+            }
+
+            .polaroid:active {
+                transform: scale(0.98);
+            }
         }
     </style>
 </head>
@@ -142,7 +280,7 @@
                 <div class="letter">
                     <p>Hello Chen,</p>
                      <p>Being your friend is such a peaceful and happy place to be. I really appreciate you as a person.
-                        I adore you for always being kind and grounded. We know you're doing your best—don’t forget that mamaeors will always be rooting for you and cheering you on, no matter what.
+                        I adore you for always being kind and grounded. We know you're doing your best—don't forget that mamaeors will always be rooting for you and cheering you on, no matter what.
                         I hope you become fruitful in whatever you set your heart on. Cheers to more gala and kwentuhan. Mwa!</p>
                     <p class="signature">With love,<br>Dher</p>
                 </div>
