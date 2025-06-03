@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-color: #fdc830;
+            --accent-secondary: #f37335;
+            --accent-tertiary: #fdc830;
+            --dot-color: rgba(253, 200, 48, 0.2);
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px var(--shadow-color);
+            z-index: 1000;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: rgb(52, 52, 52);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 3px 10px var(--shadow-color);
+            z-index: 1000;
+        }
+
+        /* Override sticky note styles for friend2 */
+        .sticky-note {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+        }
+
+        .note-front {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+        }
+
+        .note-back {
+            color: var(--accent-secondary);
+        }
+
+        /* Override title gradient */
+        .title {
+            background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Override section title gradient */
+        .section-title {
+            background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Override letter styles */
+        .letter p:first-child {
+            color: var(--accent-secondary);
+        }
+
+        .letter .signature {
+            color: var(--accent-secondary);
+        }
+
+        .letter::before {
+            background: linear-gradient(145deg, var(--accent-color), var(--accent-secondary));
+        }
+
+        /* Custom polaroid styles for friend2 */
+        .polaroid {
+            border: 1px solid rgba(243, 115, 53, 0.2);
+        }
+
+        .polaroid p {
+            color: var(--accent-secondary);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Back</a>
+    
+    <div class="container">
+        <div class="scrapbook-page">
+            <h1 class="title">Hi, Chen!</h1>
+            
+            <div class="content-grid">
+                <!-- Polaroid Photo Cards -->
+                <div class="polaroid">
+                    <img src="images/friend2/pic1.jpeg" alt="Memory 1">
+                    <p>‧₊˚💛✩ ₊˚🌼⊹♡</p>
+                </div>
+                <div class="polaroid">
+                    <img src="images/friend2/pic2.JPG" alt="Memory 2">
+                    <p>hbd</p>
+                </div>
+                <div class="polaroid">
+                    <img src="images/friend2/pic3.jpeg" alt="Memory 3">
+                    <p>✩°｡🧸𓏲⋆.🧺𖦹 ₊˚</p>
+                </div>
+
+                <!-- Sticky Notes Section -->
+                <div class="sticky-notes-section">
+                    <h2 class="section-title">3 Things I Love About You (Yieee)</h2>
+                    <div class="sticky-notes-container">
+                        <div class="sticky-note" onclick="revealMessage(this)">
+                            <div class="note-front">Click to reveal what I love about you #1</div>
+                            <div class="note-back">Your creativity??</div>
+                        </div>
+                        <div class="sticky-note" onclick="revealMessage(this)">
+                            <div class="note-front">Click to reveal what I love about you #2</div>
+                            <div class="note-back">You talking non-stop about your latest fave thing? I live for it haha</div>
+                        </div>
+                        <div class="sticky-note" onclick="revealMessage(this)">
+                            <div class="note-front">Click to reveal what I love about you #3</div>
+                            <div class="note-back">Your sweet and caring nature mwehe</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter-section">
+                <div class="letter">
+                    <p>Hello Chen,</p>
+                     <p>Being your friend is such a peaceful and happy place to be. I really appreciate you as a person.
+                        I adore you for always being kind and grounded. We know you're doing your best—don’t forget that mamaeors will always be rooting for you and cheering you on, no matter what.
+                        I hope you become fruitful in whatever you set your heart on. Cheers to more gala and kwentuhan. Mwa!</p>
+                    <p class="signature">With love,<br>Dher</p>
+                </div>
+            </div>
+
+            <div class="sticker" style="top: 20px; right: 20px; background-image: url('https://source.unsplash.com/random/100x100/?star')"></div>
+            <div class="sticker" style="bottom: 20px; left: 20px; background-image: url('https://source.unsplash.com/random/100x100/?heart')"></div>
+        </div>
+    </div>
+
+    <div class="music-control" id="musicControl">
+        🎵
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="music/Good Luck, Babe!.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Music control
+        const musicControl = document.getElementById('musicControl');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        let isPlaying = false;
+
+        musicControl.addEventListener('click', () => {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicControl.textContent = '🎵';
+            } else {
+                backgroundMusic.play();
+                musicControl.textContent = '⏸️';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Sticky note reveal function
+        function revealMessage(note) {
+            note.classList.toggle('flipped');
+        }
+
+        // Confetti animation on load
+        window.addEventListener('load', () => {
+            // You can add confetti animation here using a library like canvas-confetti
+        });
+    </script>
+</body>
+</html> 

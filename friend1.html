@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ven</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px var(--shadow-color);
+            z-index: 1000;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--accent-pink);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color:  rgb(52, 52, 52);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 3px 10px var(--shadow-color);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Back</a>
+    
+    <div class="container">
+        <div class="scrapbook-page">
+            <h1 class="title">Hi, Ven!</h1>
+            
+            <div class="content-grid">
+                <!-- Polaroid Photo Cards -->
+                <div class="polaroid">
+                    <img src="images/friend1/pic1.JPG" alt="Memory 1">
+                    <p>ೀ 🍨 ‧ ˚ 🎀 ⊹˚. ♡</p>
+                </div>
+                <div class="polaroid">
+                    <img src="images/friend1/pic3.JPG" alt="Memory 2">
+                    <p>12.28.24</p>
+                </div>
+                <div class="polaroid">
+                    <img src="images/friend1/pic2.JPG" alt="Memory 3">
+                    <p>⋆.ೃ࿔🌸*:･ </p>
+                </div>
+
+                <!-- Sticky Notes Section -->
+                <div class="sticky-notes-section">
+                    <h2 class="section-title">3 Things I Love About You (Yieee)</h2>
+                    <div class="sticky-notes-container">
+                        <div class="sticky-note" onclick="revealMessage(this)">
+                            <div class="note-front">Click to reveal what I love about you #1</div>
+                            <div class="note-back">Your Talent??? The Way You Take Photos of Us <3 </div>
+                        </div>
+                        <div class="sticky-note" onclick="revealMessage(this)">
+                            <div class="note-front">Click to reveal what I love about you #2</div>
+                            <div class="note-back">The Random Deep Talks</div>
+                        </div>
+                        <div class="sticky-note" onclick="revealMessage(this)">
+                            <div class="note-front">Click to reveal what I love about you #3</div>
+                            <div class="note-back">The Comfort You Bring Without Trying.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter-section">
+                <div class="letter">
+                    <p>Hello Venus,</p>
+                    <p>This might be a little late, but I just want to thank you for your quiet support through all these years. You probably didn’t realize it, but your presence has always brought comfort in subtle yet meaningful ways.
+                        I appreciate your unique ways of showing care for us. Know that we’re always here for you.
+                        I hope you receive all the beautiful things you truly deserve in life.</p>
+                    <p class="signature">With love,<br>Dher</p>
+                </div>
+            </div>
+
+            <div class="sticker" style="top: 20px; right: 20px; background-image: url('https://source.unsplash.com/random/100x100/?star')"></div>
+            <div class="sticker" style="bottom: 20px; left: 20px; background-image: url('https://source.unsplash.com/random/100x100/?heart')"></div>
+        </div>
+    </div>
+
+    <div class="music-control" id="musicControl">
+        🎵
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="music/Good Luck, Babe!.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Music control
+        const musicControl = document.getElementById('musicControl');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        let isPlaying = false;
+
+        musicControl.addEventListener('click', () => {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicControl.textContent = '🎵';
+            } else {
+                backgroundMusic.play();
+                musicControl.textContent = '⏸️';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Sticky note reveal function
+        function revealMessage(note) {
+            note.classList.toggle('flipped');
+        }
+
+        // Confetti animation on load
+        window.addEventListener('load', () => {
+            // You can add confetti animation here using a library like canvas-confetti
+        });
+    </script>
+</body>
+</html> 
